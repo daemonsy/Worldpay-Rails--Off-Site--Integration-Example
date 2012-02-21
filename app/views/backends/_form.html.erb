@@ -1,0 +1,17 @@
+<%= form_for(@backend) do |f| %>
+  <% if @backend.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@backend.errors.count, "error") %> prohibited this backend from being saved:</h2>
+
+      <ul>
+      <% @backend.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

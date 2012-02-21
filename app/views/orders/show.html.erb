@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<form action="https://secure-test.worldpay.com/wcc/purchase" method=POST>
+<p>
+  <b>Name:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @order.amount %>
+</p>
+
+<p>
+  <b>Currency:</b>
+  <%= @order.currency %>
+</p>
+
+<p>
+  <b>Instid:</b>
+  <%= @order.instid %>
+</p>
+<!-- This creates the button. When it is selected in the browser, the form submits the purchase details to us. -->
+<input type=submit value=" Buy This ">
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+
+
+
+<!-- This next line contains a mandatory parameter. Put your Installation ID inside the quotes after value= -->
+<input type="hidden" name="instId" value="<%= @order.instid %>">
+
+<input type="hidden" name="testMode" value="100">
+
+<!-- Another mandatory parameter. Put your own reference identifier for the item purchased inside the quotes after value= -->
+<input type="hidden" name="cartId" value="<%=@order.id%>">
+
+<!-- Another mandatory parameter. Put the total cost of the item inside the quotes after value -->
+<input type="hidden" name="amount" value="<%= @order.amount %>">
+
+<!-- Another mandatory parameter. Put the code for the purchase currency inside the quotes after value= -->
+<input type="hidden" name="currency" value="<%=@order.currency%>">
+
+
+
+
+</form>
